@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { routes } from './app.routes';  // Importamos las rutas desde app.routes.ts
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [
+    RouterModule  // Usamos appRoutes para configurar las rutas
+  ],
+  templateUrl: './app.component.html',  // Referencia al archivo HTML
 })
 export class AppComponent {
-  title = 'dvilmar-proyecto-tailwindcss';
+
+  toggleTheme(): void {
+    document.documentElement.classList.toggle('dark');
+  }
 }
