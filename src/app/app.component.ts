@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { routes } from './app.routes';  // Importamos las rutas desde app.routes.ts
+import { RouterModule } from '@angular/router';  
+import { HeaderComponent } from './layout/header/header.component';  // Importa el Header
+import { FooterComponent } from './layout/footer/footer.component';  // Importa el Footer
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterModule  // Usamos appRoutes para configurar las rutas
+    RouterModule,  // Configura las rutas en el componente
+    HeaderComponent,
+    FooterComponent
   ],
   templateUrl: './app.component.html',  // Referencia al archivo HTML
 })
 export class AppComponent {
 
-  toggleTheme(): void {
-    document.documentElement.classList.toggle('dark');
-  }
 }
