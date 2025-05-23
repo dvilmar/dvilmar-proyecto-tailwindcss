@@ -14,6 +14,9 @@ import { FooterComponent } from './layout/footer/footer.component';  // Importa 
   templateUrl: './app.component.html',  // Referencia al archivo HTML
 })
 export class AppComponent {
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
   isDarkMode = false;
 
   ngOnInit() {

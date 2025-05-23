@@ -1,11 +1,13 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Estilos predeterminados para el modo claro */
 body {
-  @apply bg-white text-black;
+  @apply text-black;
 }
 
 /* Estilos para cuando la clase 'dark' está activada en <html> */
 html.dark body {
-  @apply bg-gray-900; /* Cambiar el fondo y el texto para el modo oscuro */
+  @apply bg-gray-900 text-white; /* Cambiar el fondo y el texto para el modo oscuro */
 }

@@ -1,14 +1,197 @@
-<div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
-  <h2 class="text-2xl font-bold mb-4">Buscador de supermercado</h2>
-  <form>
-    <label class="block mb-2">Categoría de producto</label>
-    
-    <select class="w-full p-2 border rounded mb-4">
-      <option>Frutas y Verduras</option>
-      <option>Lácteos</option>
-      <option>Panadería</option>
-    </select>
-    
-    <button class="w-full bg-purple-600 text-white p-2 rounded">Buscar</button>
-  </form>
-</div>
+<!doctype html>
+<html lang="es" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Buscador de supermercados por zona" />
+    <meta name="author" content="Daniel Vilar Martínez" />
+    <title>Buscador de Supermercados</title>
+
+    <!-- Bootstrap ICONS CSS (puedes usar heroicons u otro si prefieres) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Tailwind CSS CDN (para demo rápido) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-white text-gray-800">
+
+   
+    <main class="container mx-auto px-4 pt-14 pb-12">
+      <section class="mb-12 text-center">
+        <h2 class="text-3xl font-semibold mb-6">Encuentra supermercados cercanos a ti</h2>
+        <form>
+          <div class="flex justify-center max-w-xl mx-auto">
+            <input
+              type="text"
+              id="location"
+              placeholder="Ingresa tu ciudad o código postal"
+              class="flex-grow border border-gray-300 rounded-l px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <button
+              type="button"
+              class="bg-blue-600 hover:bg-blue-700 text-white px-6 rounded-r transition"
+            >
+              Buscar
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="mb-16 text-center">
+        <h3 class="text-2xl font-semibold mb-6">Filtra los resultados por zona y categoría</h3>
+        <div class="inline-flex space-x-4">
+          <button
+            class="border border-blue-600 text-blue-600 px-4 py-2 rounded hover:bg-blue-600 hover:text-white transition"
+          >
+            Supermercados
+          </button>
+          <button
+            class="border border-blue-600 text-blue-600 px-4 py-2 rounded hover:bg-blue-600 hover:text-white transition"
+          >
+            Tiendas de Conveniencia
+          </button>
+          <button
+            class="border border-blue-600 text-blue-600 px-4 py-2 rounded hover:bg-blue-600 hover:text-white transition"
+          >
+            Mercados Locales
+          </button>
+        </div>
+      </section>
+
+      <section id="results" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <!-- Card ejemplo -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden dark:bg-gray-800/50">
+          <img
+            src="https://placehold.co/600x400"
+            alt="Supermercado"
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-4 text-gray-900">
+            <h5 class="text-lg font-bold mb-1 dark:text-white">Supermercado La Rápida</h5>
+            <p class="text-gray-700 mb-1 dark:text-gray-200">Calle Ficticia 123, Zona Centro</p>
+            <p class="text-gray-500 mb-3 text-sm dark:text-gray-400">Horario: 8:00 AM - 10:00 PM</p>
+            <p
+              class="text-blue-600 font-semibold cursor-pointer hover:underline"
+              onclick="viewProducts('supermercado1')"
+            >
+              Ver productos más vendidos
+            </p>
+          </div>
+        </div>
+
+        <!-- Copia el bloque de arriba para los otros supermercados -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden dark:bg-gray-800/50">
+          <img
+            src="https://placehold.co/600x400"
+            alt="Supermercado"
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-4 text-gray-900">
+            <h5 class="text-lg font-bold mb-1 dark:text-white">Mercado Express</h5>
+            <p class="text-gray-700 mb-1 dark:text-gray-200">Avenida Reforma 45, Zona Norte</p>
+            <p class="text-gray-500 mb-3 text-sm dark:text-gray-400">Horario: 7:00 AM - 9:00 PM</p>
+            <p
+              class="text-blue-600 font-semibold cursor-pointer hover:underline"
+              onclick="viewProducts('supermercado2')"
+            >
+              Ver productos más vendidos
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md overflow-hidden dark:bg-gray-800/50">
+          <img
+            src="https://placehold.co/600x400"
+            alt="Supermercado"
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-4 text-gray-900">
+            <h5 class="text-lg font-bold mb-1 dark:text-white">Supermercado Ahorro</h5>
+            <p class="text-gray-700 mb-1 dark:text-gray-200">Calle Oliva 789, Zona Sur</p>
+            <p class="text-gray-500 mb-3 text-sm dark:text-gray-400">Horario: 9:00 AM - 11:00 PM</p>
+            <p
+              class="text-blue-600 font-semibold cursor-pointer hover:underline"
+              onclick="viewProducts('supermercado3')"
+            >
+              Ver productos más vendidos
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md overflow-hidden dark:bg-gray-800/50">
+          <img
+            src="https://placehold.co/600x400"
+            alt="Supermercado"
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-4 text-gray-900">
+            <h5 class="text-lg font-bold mb-1 dark:text-white">Mercado de la Ciudad</h5>
+            <p class="text-gray-700 mb-1 dark:text-gray-200">Plaza Principal 150, Zona Este</p>
+            <p class="text-gray-500 mb-3 text-sm dark:text-gray-400">Horario: 6:00 AM - 8:00 PM</p>
+            <p
+              class="text-blue-600 font-semibold cursor-pointer hover:underline"
+              onclick="viewProducts('supermercado4')"
+            >
+              Ver productos más vendidos
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md overflow-hidden dark:bg-gray-800/50">
+          <img
+            src="https://placehold.co/600x400"
+            alt="Supermercado"
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-4 text-gray-900">
+            <h5 class="text-lg font-bold mb-1 dark:text-white">Supermercado El Buen Precio</h5>
+            <p class="text-gray-700 mb-1 dark:text-gray-200">Calle Larga 1010, Zona Oeste</p>
+            <p class="text-gray-500 mb-3 text-sm dark:text-gray-400">Horario: 7:30 AM - 10:30 PM</p>
+            <p
+              class="text-blue-600 font-semibold cursor-pointer hover:underline"
+              onclick="viewProducts('supermercado5')"
+            >
+              Ver productos más vendidos
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md overflow-hidden dark:bg-gray-800/50">
+          <img
+            src="https://placehold.co/600x400"
+            alt="Supermercado"
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-4 text-gray-900">
+            <h5 class="text-lg font-bold mb-1 dark:text-white">Mercadona</h5>
+            <p class="text-gray-700 mb-1 dark:text-gray-200">Avenida de Andalucía, Castilleja de la Cuesta</p>
+            <p class="text-gray-500 mb-3 text-sm dark:text-gray-400">Horario: 7:30 AM - 10:30 PM</p>
+            <p
+              class="text-blue-600 font-semibold cursor-pointer hover:underline"
+              onclick="viewProducts('supermercado6')"
+            >
+              Ver productos más vendidos
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/assets/js/main.js"></script>
+    <script>
+      function viewProducts(supermarketId) {
+        window.location.href = "productos-supermercado";
+      }
+
+      // Simple mobile menu toggle
+      const menuButton = document.getElementById('menuButton');
+      const mobileMenu = document.getElementById('mobileMenu');
+      menuButton?.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>

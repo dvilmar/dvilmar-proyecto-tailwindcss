@@ -1,8 +1,182 @@
-<div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
-  <h2 class="text-2xl font-bold mb-4">Productos más vendidos</h2>
-  <ul class="divide-y divide-gray-200">
-    <li class="py-2">🍎 Manzanas - Supermercado A</li>
-    <li class="py-2">🥛 Leche - Supermercado B</li>
-    <li class="py-2">🍞 Pan - Supermercado C</li>
-  </ul>
-</div>
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Productos más vendidos - Supermercado</title>
+  <meta name="description" content="Búsqueda de productos más vendidos por supermercado" />
+  <meta name="author" content="Daniel Vilar Martínez" />
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Bootstrap Icons CDN -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
+  />
+
+  <style>
+    @keyframes slideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-slideIn {
+      animation: slideIn 1s ease-out;
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen bg-white dark:bg-gray-900 dark:text-gray-200">
+
+  <!-- MAIN -->
+  <main class="container mx-auto pt-12 pb-12 px-4 grid grid-cols-12 gap-6 flex-grow">
+
+    <!-- Sidebar filtros -->
+    <aside class="col-span-12 md:col-span-3 border-r border-gray-300 dark:border-gray-700 pr-6">
+      <h4 class="text-xl font-semibold mb-6">Filtros</h4>
+
+      <section class="mb-6">
+        <h5 class="text-lg font-semibold mb-3">Categoría</h5>
+        <div class="space-y-2">
+          <label class="flex items-center space-x-2 text-sm cursor-pointer">
+            <input type="checkbox" value="frutas" class="form-checkbox text-blue-600" />
+            <span>Frutas</span>
+          </label>
+          <label class="flex items-center space-x-2 text-sm cursor-pointer">
+            <input type="checkbox" value="verduras" class="form-checkbox text-blue-600" />
+            <span>Verduras</span>
+          </label>
+          <label class="flex items-center space-x-2 text-sm cursor-pointer">
+            <input type="checkbox" value="panadería" class="form-checkbox text-blue-600" />
+            <span>Panadería</span>
+          </label>
+        </div>
+      </section>
+
+      <section class="mb-6">
+        <h5 class="text-lg font-semibold mb-3">Rango de Precio</h5>
+        <input
+          type="range"
+          min="0"
+          max="500"
+          step="10"
+          id="priceRange"
+          class="w-full accent-blue-600 cursor-pointer"
+          oninput="document.getElementById('priceRangeValue').textContent = this.value"
+        />
+        <p class="mt-2 text-sm">Precio: $0 - <span id="priceRangeValue">500</span></p>
+      </section>
+
+      <section class="mb-6">
+        <h5 class="text-lg font-semibold mb-3">Marca</h5>
+        <div class="space-y-2">
+          <label class="flex items-center space-x-2 text-sm cursor-pointer">
+            <input type="checkbox" value="marcaA" class="form-checkbox text-blue-600" />
+            <span>Marca A</span>
+          </label>
+          <label class="flex items-center space-x-2 text-sm cursor-pointer">
+            <input type="checkbox" value="marcaB" class="form-checkbox text-blue-600" />
+            <span>Marca B</span>
+          </label>
+        </div>
+      </section>
+    </aside>
+
+    <!-- Productos -->
+    <section class="col-span-12 md:col-span-9">
+      <h1 class="text-center text-4xl font-bold mb-8">Productos más vendidos</h1>
+
+      <!-- Carousel -->
+      <div id="carouselExample" class="relative mb-10 overflow-hidden rounded-lg shadow-lg">
+        <div class="relative h-72 sm:h-80 md:h-96 overflow-hidden">
+          <img
+            src="https://placehold.co/1200x800"
+            alt="Producto 1"
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+          <div class="absolute top-0 left-0 text-white text-2xl sm:text-3xl md:text-4xl font-bold p-4 animate-slideIn drop-shadow-lg">
+            Producto 1: ¡El mejor de la temporada!
+          </div>
+        </div>
+        <!-- Buttons -->
+        <!-- For demo, no actual JS slider -->
+      </div>
+
+      <!-- Grid de productos -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Producto ejemplo -->
+        <article class="shadow-md rounded-lg overflow-hidden bg-white dark:bg-gray-800/50">
+          <img
+            src="https://placehold.co/300x200"
+            alt="Producto 1"
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-4">
+            <p class="font-semibold text-lg mb-2 text-gray-900 dark:text-gray-100">
+              Producto 1
+            </p>
+            <p class="text-blue-600 dark:text-blue-400 font-bold text-xl mb-4">
+              $16.00
+            </p>
+            <button
+              class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+              type="button"
+            >
+              Ver más información
+            </button>
+          </div>
+        </article>
+
+        <article class="shadow-md rounded-lg overflow-hidden bg-white dark:bg-gray-800/50">
+          <img
+            src="https://placehold.co/300x200"
+            alt="Producto 1"
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-4">
+            <p class="font-semibold text-lg mb-2 text-gray-900 dark:text-gray-100">
+              Producto 2
+            </p>
+            <p class="text-blue-600 dark:text-blue-400 font-bold text-xl mb-4">
+              $38.00
+            </p>
+            <button
+              class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+              type="button"
+            >
+              Ver más información
+            </button>
+          </div>
+        </article>
+
+        <article class="shadow-md rounded-lg overflow-hidden bg-white dark:bg-gray-800/50">
+          <img
+            src="https://placehold.co/300x200"
+            alt="Producto 1"
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-4">
+            <p class="font-semibold text-lg mb-2 text-gray-900 dark:text-gray-100">
+              Producto 3
+            </p>
+            <p class="text-blue-600 dark:text-blue-400 font-bold text-xl mb-4">
+              $22.00
+            </p>
+            <button
+              class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+              type="button"
+            >
+              Ver más información
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
