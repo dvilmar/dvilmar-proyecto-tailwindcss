@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, Input, OnInit  } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -7,17 +7,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements OnInit {
-
-  ngOnInit(): void {
-    if (localStorage.getItem('dark-theme') === 'true') {
-      document.documentElement.classList.add('dark');
-    }
-  }
-
-  toggleTheme(): void {
-    const isDarkMode = document.documentElement.classList.toggle('dark');
-    
-    localStorage.setItem('dark-theme', isDarkMode.toString());
-  }
+export class HeaderComponent {
+  @Input() isDarkMode: boolean = false;
+  @Input() toggleTheme!: () => void;
 }

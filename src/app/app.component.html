@@ -2,14 +2,14 @@
 <div class="min-h-screen flex flex-col">
 
   <!-- Header -->
-  <app-header></app-header>  <!-- Aquí se importa el componente Header -->
+  <app-header [isDarkMode]="isDarkMode" [toggleTheme]="toggleTheme.bind(this)"></app-header>
 
   <!-- Contenido dinámico -->
-  <main class="flex-grow p-6">
-    <router-outlet></router-outlet>  <!-- Aquí se cargan los componentes según la ruta -->
+  <main class="flex-grow p-6 ">
+    <router-outlet></router-outlet>
   </main>
 
   <!-- Footer -->
-  <app-footer></app-footer>  <!-- Aquí se importa el componente Footer -->
+  <app-footer></app-footer>
 
 </div>
